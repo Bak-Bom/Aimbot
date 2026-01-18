@@ -189,14 +189,14 @@ RunService.RenderStepped:Connect(function()
 	FOVCircle.Radius = _G.FOV
 
 	if Holding and _G.AimbotEnabled then
-		if not LockTarget then
-			LockTarget = GetTarget()
-		end
-		if LockTarget then
-			local cf = CFrame.new(Camera.CFrame.Position, LockTarget.Position)
-			Camera.CFrame = Camera.CFrame:Lerp(cf, 1 - _G.Smooth)
-		end
-	end
+    LockTarget = GetTarget()
+    if LockTarget then
+        local cf = CFrame.new(Camera.CFrame.Position, LockTarget.Position)
+        Camera.CFrame = Camera.CFrame:Lerp(cf, 1 - _G.Smooth)
+    end
+else
+    LockTarget = nil
+end
 
 	for player,esp in pairs(ESPObjects) do
 		local char = player.Character
